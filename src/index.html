@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en-AE">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Drizle Pay | Payment Infrastructure to Grow Your Revenue</title>
+  <meta name="description" content="Drizle Pay helps businesses accept online payments, manage checkout flows, automate billing, and move money with confidence." />
+  <link rel="canonical" href="https://drizlepay.com/" />
+  <meta property="og:title" content="Drizle Pay | Payment Infrastructure to Grow Your Revenue" />
+  <meta property="og:description" content="Accept payments, manage billing, and support scalable revenue operations with Drizle Pay." />
+  <meta property="og:url" content="https://drizlepay.com/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Drizle Pay | Payment Infrastructure to Grow Your Revenue" />
+  <meta name="twitter:description" content="Accept payments, manage billing, and support scalable revenue operations with Drizle Pay." />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Drizle Pay",
+    "url": "https://drizlepay.com/",
+    "description": "Payment infrastructure for businesses to accept payments, manage billing, and support scalable revenue operations."
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #f6f9fc;
+      --panel: #ffffff;
+      --ink: #0f172a;
+      --muted: #5b677a;
+      --line: #d9e2ec;
+      --primary: rgb(34, 109, 239);
+      --primary-dark: rgb(20, 90, 250);
+      --accent: #00d4ff;
+      --success: #16a34a;
+      --shadow: 0 22px 70px rgba(15, 23, 42, .12);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, rgba(99, 91, 255, .16), transparent 32%), var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(14px);
+      background: rgba(246, 249, 252, .82);
+      border-bottom: 1px solid rgba(217, 226, 236, .72);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 72px; gap: 24px; }
+    .brand { font-weight: 800; font-size: 24px; letter-spacing: -.04em; }
+    .brand span { color: var(--primary); }
+    .links { display: flex; gap: 26px; color: var(--muted); font-weight: 650; font-size: 14px; }
+    .actions { display: flex; gap: 12px; align-items: center; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 42px; padding: 0 18px; border-radius: 999px; font-weight: 750;
+      border: 1px solid transparent;
+    }
+    .btn.primary { background: var(--primary); color: white; box-shadow: 0 12px 24px rgba(99, 91, 255, .22); }
+    .btn.primary:hover { background: var(--primary-dark); }
+    .btn.ghost { border-color: var(--line); background: rgba(255,255,255,.72); color: var(--ink); }
+
+    .hero { padding: 92px 0 72px; }
+    .hero-grid { display: grid; grid-template-columns: 1.04fr .96fr; align-items: center; gap: 54px; }
+    .eyebrow { color: var(--primary); font-weight: 800; letter-spacing: .02em; margin-bottom: 18px; }
+    h1 { font-size: clamp(46px, 7vw, 82px); line-height: .96; letter-spacing: -.07em; margin: 0 0 24px; }
+    .lead { font-size: clamp(18px, 2vw, 22px); color: var(--muted); max-width: 680px; margin: 0 0 34px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .hero-card {
+      background: linear-gradient(145deg, #101828, #1e293b);
+      color: white;
+      border-radius: 32px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::before {
+      content: "";
+      position: absolute; inset: -80px -80px auto auto; width: 260px; height: 260px;
+      background: radial-gradient(circle, rgba(0, 212, 255, .42), transparent 68%);
+    }
+    .checkout { position: relative; display: grid; gap: 18px; }
+    .checkout-top { display: flex; justify-content: space-between; align-items: center; color: #cbd5e1; }
+    .amount { font-size: 42px; font-weight: 850; letter-spacing: -.04em; }
+    .payment-box { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 24px; padding: 20px; display: grid; gap: 12px; }
+    .field { background: rgba(255,255,255,.12); border-radius: 14px; padding: 14px 16px; color: #e2e8f0; display:flex; justify-content:space-between; }
+    .success { color: #86efac; font-weight: 800; }
+    .cards { display:grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin: 36px 0 0; }
+    .stat, .feature, .step { background: rgba(255,255,255,.8); border: 1px solid var(--line); border-radius: 24px; padding: 24px; }
+    .stat strong { display:block; font-size: 34px; letter-spacing:-.04em; margin-bottom:4px; }
+    section { padding: 72px 0; }
+    .section-title { font-size: clamp(34px, 4vw, 56px); line-height: 1; letter-spacing: -.055em; margin: 0 0 18px; }
+    .section-copy { color: var(--muted); font-size: 18px; max-width: 760px; margin: 0 0 36px; }
+    .feature-grid { display:grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .feature h3, .step h3 { margin: 0 0 10px; font-size: 22px; letter-spacing: -.03em; }
+    .feature p, .step p, .stat span { color: var(--muted); margin: 0; }
+    .code {
+      background: #0f172a; color: #dbeafe; border-radius: 28px; padding: 26px; overflow:auto;
+      box-shadow: var(--shadow); font: 14px/1.65 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    .split { display:grid; grid-template-columns: .9fr 1.1fr; gap: 32px; align-items: start; }
+    .steps { display:grid; gap: 16px; }
+    .pill { display:inline-flex; border-radius:999px; padding:7px 12px; background:#e0f2fe; color:#0369a1; font-weight:800; font-size:13px; margin-bottom:12px; }
+    .cta { background: #0f172a; color: white; border-radius: 36px; padding: 44px; display:flex; align-items:center; justify-content:space-between; gap:24px; box-shadow: var(--shadow); }
+    .cta h2 { margin:0; font-size: clamp(30px, 4vw, 48px); line-height:1; letter-spacing:-.05em; }
+    .cta p { color:#cbd5e1; margin:12px 0 0; max-width: 620px; }
+    footer { padding: 36px 0; color: var(--muted); border-top: 1px solid var(--line); }
+    .footer-grid { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+
+    @media (max-width: 900px) {
+      .hero-grid, .split { grid-template-columns: 1fr; }
+      .cards, .feature-grid { grid-template-columns: 1fr; }
+      .links { display:none; }
+      .cta { flex-direction:column; align-items:flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="https://drizlepay.com/" aria-label="Drizle Pay homepage">Drizle<span>Pay</span></a>
+      <nav class="links" aria-label="Primary navigation">
+        <a href="#products">Products</a>
+        <a href="#developers">Developers</a>
+        <a href="#settlement">Settlement</a>
+        <a href="https://drizlepay.com/pricing">Pricing</a>
+      </nav>
+      <div class="actions">
+        <a class="btn ghost" href="https://drizlepay.com/login">Sign in</a>
+        <a class="btn primary" href="https://drizlepay.com/contact/sales">Contact sales →</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Built for fast-growing digital businesses</div>
+          <h1>Payment infrastructure to grow your revenue.</h1>
+          <p class="lead">Accept online payments, manage checkout flows, automate recurring billing, and support clean settlement operations from your first transaction onward.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="https://drizlepay.com/register">Get started →</a>
+            <a class="btn ghost" href="https://drizlepay.com/contact/sales">Talk to sales</a>
+          </div>
+          <div class="cards" aria-label="Key benefits">
+            <div class="stat"><strong>99.9%</strong><span>Platform uptime target</span></div>
+            <div class="stat"><strong>Multi</strong><span>Payment methods and currencies</span></div>
+            <div class="stat"><strong>API</strong><span>Developer-first integration</span></div>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Payment preview">
+          <div class="checkout">
+            <div class="checkout-top"><span>Drizle Checkout</span><span class="success">Live</span></div>
+            <div class="amount">AED 420.00</div>
+            <div class="payment-box">
+              <div class="field"><span>Card</span><span>•••• 4242</span></div>
+              <div class="field"><span>Customer</span><span>verified</span></div>
+              <div class="field"><span>Status</span><span class="success">approved</span></div>
+            </div>
+            <a class="btn primary" href="https://drizlepay.com/register">Create payment</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="products">
+      <div class="container">
+        <h2 class="section-title">One platform for checkout, billing, payouts, and reporting.</h2>
+        <p class="section-copy">Drizle Pay gives merchants the operating layer they need after the payment button: transaction visibility, reconciliation support, payout files, and scalable payment operations.</p>
+        <div class="feature-grid">
+          <article class="feature"><span class="pill">Checkout</span><h3>Hosted and embedded payments</h3><p>Launch payment pages, payment links, and embedded checkout journeys without rebuilding your stack every time.</p></article>
+          <article class="feature"><span class="pill">Billing</span><h3>Subscriptions and invoices</h3><p>Support recurring billing, one-off invoices, payment reminders, and customer lifecycle events.</p></article>
+          <article class="feature"><span class="pill">Risk</span><h3>Control fraud exposure</h3><p>Use rules, velocity checks, customer signals, and manual review workflows to reduce bad transactions.</p></article>
+          <article class="feature"><span class="pill">Payouts</span><h3>Merchant settlement flows</h3><p>Generate payout files, manage settlement schedules, and keep finance teams aligned with operations.</p></article>
+          <article class="feature"><span class="pill">Reporting</span><h3>Clean transaction data</h3><p>Track authorisations, captures, refunds, disputes, fees, and settlement status from one dashboard.</p></article>
+          <article class="feature"><span class="pill">Support</span><h3>Built for operations teams</h3><p>Give support, finance, risk, and sales teams the visibility they need to resolve merchant issues quickly.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="developers">
+      <div class="container split">
+        <div>
+          <h2 class="section-title">Developer-friendly APIs without operational blind spots.</h2>
+          <p class="section-copy">A payment API should not stop at authorisation. Drizle Pay is designed around the full lifecycle: create, authenticate, capture, refund, dispute, reconcile, and settle.</p>
+          <a class="btn primary" href="https://docs.drizlepay.com/">Read documentation →</a>
+        </div>
+        <pre class="code"><code>POST /v1/payments
+{
+  "amount": 42000,
+  "currency": "AED",
+  "merchant_reference": "ORD-10045",
+  "customer": {
+    "email": "customer@example.com"
+  },
+  "capture": true,
+  "return_url": "https://merchant.example/return"
+}</code></pre>
+      </div>
+    </section>
+
+    <section id="settlement">
+      <div class="container split">
+        <div>
+          <h2 class="section-title">Built for real payment operations.</h2>
+          <p class="section-copy">For a PSP or payment gateway, the hard part is not only accepting the payment. The real work is clean onboarding, pricing controls, chargeback handling, payout accuracy, and settlement reconciliation.</p>
+        </div>
+        <div class="steps">
+          <article class="step"><h3>1. Merchant onboarding</h3><p>Capture merchant data, KYB documents, pricing setup, MCC, limits, and settlement details.</p></article>
+          <article class="step"><h3>2. Transaction processing</h3><p>Route payments through configured channels while tracking every event in the lifecycle.</p></article>
+          <article class="step"><h3>3. Finance and settlement</h3><p>Match gross sales, refunds, fees, reserves, and payouts so finance can close books confidently.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container cta">
+        <div>
+          <h2>Ready to launch with Drizle Pay?</h2>
+          <p>Use drizlepay.com as the public website and keep all product, dashboard, support, and documentation links under the Drizle Pay brand.</p>
+        </div>
+        <a class="btn primary" href="https://drizlepay.com/contact/sales">Contact sales →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>© 2026 Drizle Pay. All rights reserved.</div>
+      <div><a href="https://drizlepay.com/privacy">Privacy</a> · <a href="https://drizlepay.com/terms">Terms</a> · <a href="https://drizlepay.com/status">Status</a></div>
+    </div>
+  </footer>
+</body>
+</html>
