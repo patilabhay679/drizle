@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">DrizlePay</string>
+    <string name="title_activity_main">DrizlePay</string>
+    <string name="package_name">com.drizlepay.app</string>
+    <string name="custom_url_scheme">com.drizlepay.app</string>
+</resources>

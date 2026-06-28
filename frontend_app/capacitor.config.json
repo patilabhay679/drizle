@@ -1,0 +1,5 @@
+{
+  "appId": "com.drizlepay.app",
+  "appName": "DrizlePay",
+  "webDir": "../backend/build"
+}
