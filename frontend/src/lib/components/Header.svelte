@@ -53,7 +53,7 @@
 								<span class="dd-link-title">Payments<svg class="dd-arrow" width="10" height="8" viewBox="0 0 10 8" fill="none" aria-hidden="true"><path fill="currentColor" d="M9.752 3.913 5.87 7.825l-.959-.951 2.27-2.287H0v-1.35h7.18L4.912.951 5.871 0z"/></svg></span>
 								<span class="dd-link-desc">Accept online payments</span>
 							</a>
-							<a href="/docs/recurring-payments" class="dd-link">
+							<a href="/docs/subscriptions" class="dd-link">
 								<span class="dd-link-title">Subscriptions<svg class="dd-arrow" width="10" height="8" viewBox="0 0 10 8" fill="none" aria-hidden="true"><path fill="currentColor" d="M9.752 3.913 5.87 7.825l-.959-.951 2.27-2.287H0v-1.35h7.18L4.912.951 5.871 0z"/></svg></span>
 								<span class="dd-link-desc">Recurring billing management</span>
 							</a>
@@ -87,7 +87,7 @@
 						</section>
 						<section>
 							<h4 class="dd-stitle">Revenue</h4>
-							<a href="/docs/recurring-payments" class="dd-link">
+							<a href="/docs/subscriptions" class="dd-link">
 								<span class="dd-link-title">SaaS Subscriptions<svg class="dd-arrow" width="10" height="8" viewBox="0 0 10 8" fill="none" aria-hidden="true"><path fill="currentColor" d="M9.752 3.913 5.87 7.825l-.959-.951 2.27-2.287H0v-1.35h7.18L4.912.951 5.871 0z"/></svg></span>
 								<span class="dd-link-desc">Automate recurring billing</span>
 							</a>
@@ -115,7 +115,7 @@
 								<span class="dd-link-title">Getting Started<svg class="dd-arrow" width="10" height="8" viewBox="0 0 10 8" fill="none" aria-hidden="true"><path fill="currentColor" d="M9.752 3.913 5.87 7.825l-.959-.951 2.27-2.287H0v-1.35h7.18L4.912.951 5.871 0z"/></svg></span>
 								<span class="dd-link-desc">Quick integration guide</span>
 							</a>
-							<a href="/docs/api" class="dd-link">
+							<a href="/docs" class="dd-link">
 								<span class="dd-link-title">API Reference<svg class="dd-arrow" width="10" height="8" viewBox="0 0 10 8" fill="none" aria-hidden="true"><path fill="currentColor" d="M9.752 3.913 5.87 7.825l-.959-.951 2.27-2.287H0v-1.35h7.18L4.912.951 5.871 0z"/></svg></span>
 								<span class="dd-link-desc">Complete API documentation</span>
 							</a>
@@ -142,9 +142,9 @@
 					<div class="dd-grid">
 						<section>
 							<h4 class="dd-stitle">Learn</h4>
-							<a href="/docs" class="dd-link">
-								<span class="dd-link-title">Documentation<svg class="dd-arrow" width="10" height="8" viewBox="0 0 10 8" fill="none" aria-hidden="true"><path fill="currentColor" d="M9.752 3.913 5.87 7.825l-.959-.951 2.27-2.287H0v-1.35h7.18L4.912.951 5.871 0z"/></svg></span>
-								<span class="dd-link-desc">Guides &amp; references</span>
+							<a href="/about" class="dd-link">
+								<span class="dd-link-title">About<svg class="dd-arrow" width="10" height="8" viewBox="0 0 10 8" fill="none" aria-hidden="true"><path fill="currentColor" d="M9.752 3.913 5.87 7.825l-.959-.951 2.27-2.287H0v-1.35h7.18L4.912.951 5.871 0z"/></svg></span>
+								<span class="dd-link-desc">Company &amp; team</span>
 							</a>
 							<a href="/support" class="dd-link">
 								<span class="dd-link-title">Support<svg class="dd-arrow" width="10" height="8" viewBox="0 0 10 8" fill="none" aria-hidden="true"><path fill="currentColor" d="M9.752 3.913 5.87 7.825l-.959-.951 2.27-2.287H0v-1.35h7.18L4.912.951 5.871 0z"/></svg></span>
@@ -247,7 +247,7 @@
 		width: 200px;
 		background: #fff;
 		border: 1px solid rgba(0,0,0,0.06);
-		border-radius: 8px;
+		border-radius: 6px;
 		box-shadow:
 			0 0 0 1px rgba(0,0,0,0.02),
 			0 6px 20px rgba(0,0,0,0.06),
@@ -286,7 +286,7 @@
 	.dd-link {
 		display: flex;
 		flex-direction: column;
-		padding: 6px 14px;
+		padding: 8px 14px;
 		border-radius: 10px;
 		text-decoration: none;
 		transition: background .15s ease;
@@ -331,9 +331,8 @@
 		.links { display: none; }
 	}
 	.btn.sales {
-		font-size: 13px;
 		font-weight: 600;
-		color: var(--muted);
+		color: var(--ink);
 		text-decoration: none;
 		padding: 6px 12px;
 		border-radius: 4px;

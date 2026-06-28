@@ -104,11 +104,10 @@
 
 <style>
 	.login-page {
-		min-height: 100vh;
 		display: grid;
-		place-items: center;
+		place-items: start center;
 		background: #f8fafc;
-		padding: 24px;
+		padding: 10vh 24px 60px;
 	}
 	.login-card {
 		width: 100%;

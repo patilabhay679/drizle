@@ -52,10 +52,10 @@
 
 <div class="page pricing-page">
 	<section class="page-hero">
-		<div class="container" style="text-align:center;">
+		<div class="container">
 			<div class="eyebrow">Pricing</div>
-			<h1 style="margin:0 auto 28px;">Simple, transparent pricing</h1>
-			<p class="lead" style="margin:0 auto 0;">No setup fees, no monthly minimums, no hidden charges. You only pay when you process.</p>
+			<h1>Simple, transparent pricing</h1>
+			<p class="lead">No setup fees, no monthly minimums, no hidden charges. You only pay when you process.</p>
 		</div>
 	</section>
 
@@ -147,7 +147,8 @@
 		background: var(--hero-bg);
 		color: var(--hero-text);
 	}
-	.page-hero .lead { color: var(--hero-muted); max-width: 700px; }
+	.page-hero h1 { max-width: 700px; }
+	.page-hero .lead { color: var(--hero-muted); max-width: 600px; }
 	.plans {
 		display: grid;
 		grid-template-columns: 1fr 1fr;

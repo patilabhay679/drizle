@@ -23,5 +23,8 @@
 				<div><strong>API & Webhooks</strong><span>Extensive integration options to keep your product catalog and financial systems perfectly synced.</span></div>
 			</div>
 		</div>
+		<div class="pricing-anchor">
+			<a href="/pricing">See our transparent pricing →</a>
+		</div>
 	</div>
 </section>

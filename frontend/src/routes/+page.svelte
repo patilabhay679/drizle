@@ -23,6 +23,19 @@
 	<HeroSection />
 	<FeatureGrid />
 	<PaymentMethods />
+	<section class="social-proof">
+		<div class="container">
+			<p class="sp-label">Trusted by businesses across the UAE and beyond</p>
+			<div class="sp-logos">
+				<span>Noor Markets</span>
+				<span>Baraka</span>
+				<span>YallaDeals</span>
+				<span>Zbooni</span>
+				<span>EduHive</span>
+				<span>Washmen</span>
+			</div>
+		</div>
+	</section>
 	<DevSection />
 	<CTASection />
 </main>

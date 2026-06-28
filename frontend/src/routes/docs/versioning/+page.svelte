@@ -31,7 +31,7 @@
 </table>
 
 <h2>Upgrading</h2>
-<p>We recommend pinning to a specific version in production. Test new versions in your sandbox before upgrading. See our <a href="/docs/changelog">changelog</a> for detailed migration guides.</p>
+<p>We recommend pinning to a specific version in production. Test new versions in your sandbox before upgrading. See our <a href="/docs/versioning">changelog</a> for detailed migration guides.</p>
 
 <div class="next-steps">
 <strong>Next steps</strong>

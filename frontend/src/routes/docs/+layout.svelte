@@ -77,6 +77,7 @@
 				{ href: '/docs/country-specs', label: 'Country Specs' },
 				{ href: '/docs/persons', label: 'Persons' },
 				{ href: '/docs/external-accounts', label: 'External Accounts' },
+				{ href: '/docs/platforms', label: 'Platforms' },
 			]
 		},
 		{
@@ -115,7 +116,7 @@
 <div class="dl">
 	<aside class="ds" class:open={sidebarOpen}>
 		<div class="ds-hd">
-			<a href="/docs" class="ds-brand">Drizle<span>Pay</span></a>
+			<a href="/" class="ds-brand">Drizle<span>Pay</span> <span class="ds-suffix">Docs</span></a>
 			<button class="ds-close" onclick={() => sidebarOpen = false}>✕</button>
 		</div>
 		<nav>
@@ -190,6 +191,7 @@
 	}
 	.ds-brand { font-weight: 800; font-size: 17px; color: #0f172a; text-decoration: none; letter-spacing: -0.02em; }
 	.ds-brand span { color: var(--primary); }
+	.ds-brand .ds-suffix { font-size: 13px; font-weight: 500; color: #94a3b8; }
 	.ds-close { display: none; background: none; border: none; font-size: 18px; cursor: pointer; color: #94a3b8; }
 	nav { flex: 1; padding: 12px 10px 20px; }
 	.ng { margin-bottom: 24px; }

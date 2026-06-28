@@ -6,8 +6,8 @@
 	<div class="container hero-grid">
 		<div>
 			<div class="eyebrow">More Than Just a Payment Gateway. We're Full-Stack.</div>
-			<h1>Your Full-Stack Payment<br>Infrastructure</h1>
-			<p class="lead">Payment gateways are just one piece of the puzzle. Our full-stack platform intelligently routes payments, manages global compliance, and automates recurring billing to maximize your successful transactions.</p>
+			<h1>Start Accepting Payments<br>in Minutes</h1>
+			<p class="lead">A unified platform that replaces your payment gateway, subscription engine, tax calculator, fraud screening, invoicing<br>and payout tool — all from a single integration.</p>
 			<div class="hero-actions">
 				<a class="btn primary" href="/login?register=true">Try Now</a>
 				<a class="btn ghost" href="/contact">Schedule Demo</a>

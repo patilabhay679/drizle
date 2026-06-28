@@ -12,12 +12,32 @@
 	let showFooter = $derived(!isDashboard);
 </script>
 
-{#if showMarketing}
-	<Header />
+{#if isDocs}
+	{@render children()}
+	{#if showFooter}
+		<Footer />
+	{/if}
+{:else}
+	<div class="layout">
+		{#if showMarketing}
+			<Header />
+		{/if}
+
+		<main>
+			{@render children()}
+		</main>
+
+		{#if showFooter}
+			<Footer />
+		{/if}
+	</div>
 {/if}
 
-{@render children()}
-
-{#if showFooter}
-	<Footer />
-{/if}
+<style>
+	.layout {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+	}
+	main { flex: 1; }
+</style>

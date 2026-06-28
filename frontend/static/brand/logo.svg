@@ -5,5 +5,5 @@
     <path d="M84,10 L115,45 L74,80 L60,80 L80,45 L59,10 Z" fill="#02c366" />
   </g>
 
-  <text x="150" y="75" font-family="Inter, system-ui, sans-serif" font-size="46" font-weight="800" fill="#06162c">Drizle<tspan fill="#02c366" font-weight="600">Pay</tspan></text>
+  <text x="150" y="75" font-family="Urbanist, Inter, system-ui, sans-serif" font-size="46" font-weight="800" fill="#06162c">Drizle<tspan fill="#02c366" font-weight="600">Pay</tspan></text>
 </svg>
