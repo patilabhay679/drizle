@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>Drizle Pay | Global Payments & Full-Stack Digital Commerce</title>
+	<title>DrizlePay | Global Payments & Full-Stack Digital Commerce</title>
 	<meta name="description" content="Increase your authorization rates with Drizle Pay. Our full-stack digital commerce platform handles payments, subscriptions, global compliance, and intelligent routing." />
 	<link rel="canonical" href="https://drizlepay.com/" />
 	<meta property="og:title" content="Drizle Pay | Global Payments & Full-Stack Digital Commerce" />

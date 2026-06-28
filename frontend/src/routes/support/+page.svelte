@@ -59,7 +59,7 @@
 </script>
 
 <svelte:head>
-	<title>Support | Drizle Pay</title>
+	<title>Support | DrizlePay</title>
 	<meta name="description" content="Get help with Drizle Pay. Browse FAQs, explore documentation, or reach out to our support team." />
 </svelte:head>
 

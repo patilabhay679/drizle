@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>Refunds & Disputes | Drizle Pay</title>
+	<title>Refunds & Disputes | DrizlePay</title>
 </svelte:head>
 
 <div class="ref">

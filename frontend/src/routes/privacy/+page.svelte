@@ -2,7 +2,7 @@
 </script>
 
 <svelte:head>
-	<title>Privacy Policy | Drizle Pay</title>
+	<title>Privacy Policy | DrizlePay</title>
 	<meta name="description" content="Drizle Pay Privacy Policy — how we collect, use, and protect your personal information." />
 </svelte:head>
 

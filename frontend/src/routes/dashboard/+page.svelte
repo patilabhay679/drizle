@@ -76,7 +76,7 @@
 </script>
 
 <svelte:head>
-	<title>Dashboard | Drizle Pay</title>
+	<title>Dashboard | DrizlePay</title>
 </svelte:head>
 
 {#if loading}

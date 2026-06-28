@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>Idempotency | Drizle Pay API</title>
+	<title>Idempotency | DrizlePay</title>
 </svelte:head>
 
 <div class="ref">

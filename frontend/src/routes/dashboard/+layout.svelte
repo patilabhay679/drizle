@@ -68,7 +68,7 @@
 	<div class="dashboard">
 		<aside class="sidebar" class:open={sidebarOpen}>
 			<div class="sidebar-header">
-				<a href="/" class="brand">Drizle<span>Pay</span></a>
+				<a href="/" class="brand"><svg viewBox="0 0 120 130" width="24" height="26" fill="none" aria-hidden="true"><path d="M25,15 L50,15 L30,105 L5,105 Z" fill="#06162c"/><path d="M57,15 L82,15 L62,105 L37,105 Z" fill="#06162c" opacity="0.85"/><path d="M89,15 L120,55 L79,105 L65,105 L85,55 L64,15 Z" fill="#02c366"/></svg> Drizle<span>Pay</span></a>
 				<button class="close-btn" onclick={() => sidebarOpen = false}>✕</button>
 			</div>
 			<nav>

@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>Early Fraud Warnings API | Drizle Pay</title>
+	<title>Early Fraud Warnings API | DrizlePay</title>
 </svelte:head>
 
 <div class="ref">

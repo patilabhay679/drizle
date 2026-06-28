@@ -17,7 +17,7 @@
 </script>
 
 <svelte:head>
-	<title>Monthly Statement | Drizle Pay</title>
+	<title>Monthly Statement | DrizlePay</title>
 </svelte:head>
 
 <div class="page-header">

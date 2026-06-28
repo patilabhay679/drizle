@@ -2,7 +2,7 @@
 </script>
 
 <svelte:head>
-	<title>About Us | Drizle Pay</title>
+	<title>About Us | DrizlePay</title>
 	<meta name="description" content="Learn about Drizle Pay — the UAE's full-stack payment platform powering digital commerce for businesses across the Middle East." />
 </svelte:head>
 

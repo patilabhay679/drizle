@@ -2,7 +2,7 @@
 </script>
 
 <svelte:head>
-	<title>Terms & Conditions | Drizle Pay</title>
+	<title>Terms & Conditions | DrizlePay</title>
 	<meta name="description" content="Drizle Pay Terms and Conditions — the terms governing use of our payment platform and services." />
 </svelte:head>
 

@@ -37,7 +37,7 @@
 </script>
 
 <svelte:head>
-	<title>Recurring Payments | Drizle Pay</title>
+	<title>Recurring Payments | DrizlePay</title>
 </svelte:head>
 
 <div class="page-header">

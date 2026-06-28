@@ -46,7 +46,7 @@
 </script>
 
 <svelte:head>
-	<title>Pricing | Drizle Pay</title>
+	<title>Pricing | DrizlePay</title>
 	<meta name="description" content="Transparent pricing for Drizle Pay. No setup fees, no hidden charges. Accept payments in AED and 100+ currencies." />
 </svelte:head>
 

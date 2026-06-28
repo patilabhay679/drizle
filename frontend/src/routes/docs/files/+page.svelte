@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>Files API | Drizle Pay</title>
+	<title>Files API | DrizlePay</title>
 </svelte:head>
 
 <div class="ref">

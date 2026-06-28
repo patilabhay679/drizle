@@ -45,7 +45,7 @@
 </script>
 
 <svelte:head>
-	<title>User Management | Drizle Pay</title>
+	<title>User Management | DrizlePay</title>
 </svelte:head>
 
 <div class="page-header">

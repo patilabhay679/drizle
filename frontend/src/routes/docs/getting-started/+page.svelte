@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>Quickstart | Drizle Pay API</title>
+	<title>Quickstart | DrizlePay</title>
 </svelte:head>
 
 <div class="ref">

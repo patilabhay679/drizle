@@ -43,7 +43,7 @@
 </script>
 
 <svelte:head>
-	<title>Payment Links | Drizle Pay</title>
+	<title>Payment Links | DrizlePay</title>
 </svelte:head>
 
 <div class="page-header">

@@ -17,7 +17,7 @@
 </script>
 
 <svelte:head>
-	<title>Tax Invoice | Drizle Pay</title>
+	<title>Tax Invoice | DrizlePay</title>
 </svelte:head>
 
 <div class="page-header">

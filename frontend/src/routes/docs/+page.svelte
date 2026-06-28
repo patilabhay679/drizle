@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>API Reference | Drizle Pay</title>
+	<title>API Reference | DrizlePay</title>
 	<meta name="description" content="Drizle Pay API reference. Build payment experiences with our REST API." />
 </svelte:head>
 

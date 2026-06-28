@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>Webhook Endpoints API | Drizle Pay</title>
+	<title>Webhook Endpoints API | DrizlePay</title>
 </svelte:head>
 
 <div class="ref">

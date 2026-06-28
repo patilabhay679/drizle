@@ -25,7 +25,7 @@
 </script>
 
 <svelte:head>
-	<title>Contact Sales | Drizle Pay</title>
+	<title>Contact Sales | DrizlePay</title>
 	<meta name="description" content="Contact Drizle Pay's sales team. Get pricing, enterprise plans, and custom payment solutions for your business." />
 </svelte:head>
 

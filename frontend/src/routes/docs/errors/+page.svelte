@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>Error Codes | Drizle Pay API</title>
+	<title>Error Codes | DrizlePay</title>
 </svelte:head>
 
 <div class="ref">

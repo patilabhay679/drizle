@@ -6,7 +6,7 @@
 	<div class="container hero-grid">
 		<div>
 			<div class="eyebrow">More Than Just a Payment Gateway. We're Full-Stack.</div>
-			<h1>Increase Authorization Rates with<br>DrizlePay</h1>
+			<h1>Your Full-Stack Payment<br>Infrastructure</h1>
 			<p class="lead">Payment gateways are just one piece of the puzzle. Our full-stack platform intelligently routes payments, manages global compliance, and automates recurring billing to maximize your successful transactions.</p>
 			<div class="hero-actions">
 				<a class="btn primary" href="/login?register=true">Try Now</a>

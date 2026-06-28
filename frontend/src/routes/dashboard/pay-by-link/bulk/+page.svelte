@@ -20,7 +20,7 @@
 </script>
 
 <svelte:head>
-	<title>Bulk Uploads | Drizle Pay</title>
+	<title>Bulk Uploads | DrizlePay</title>
 </svelte:head>
 
 <div class="page-header">

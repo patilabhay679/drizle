@@ -86,7 +86,7 @@
 </script>
 
 <svelte:head>
-	<title>Settings | Drizle Pay</title>
+	<title>Settings | DrizlePay</title>
 </svelte:head>
 
 <div class="page-header">

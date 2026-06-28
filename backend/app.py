@@ -53,7 +53,10 @@ elif SECRET_KEY == "drizle-dev-secret-change-in-prod":
 
 @app.get("/api/v1/health")
 async def health():
-    return {"status": "ok"}
+    return {
+        "status": "ok",
+        "system":"busy"
+        }
 
 
 from routers.auth import router as auth_router

@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>Setup Intents API | Drizle Pay</title>
+	<title>Setup Intents API | DrizlePay</title>
 </svelte:head>
 
 <div class="ref">
