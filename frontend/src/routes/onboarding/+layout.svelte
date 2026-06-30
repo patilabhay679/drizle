@@ -7,13 +7,20 @@
 
 	let { children } = $props();
 
-	onMount(() => {
-		if (!auth.isAuthenticated) goto('/login');
-	});
-
 	let pathname = $derived(page.url.pathname);
+	let kybPending = $derived(!auth.merchant?.active);
 	let testMode = $state(auth.merchant?.test_mode ?? false);
+	let effectiveTestMode = $derived(kybPending || testMode);
 	let toggling = $state(false);
+
+	onMount(async () => {
+		if (!auth.isAuthenticated) goto('/login');
+		if (kybPending && !testMode) {
+			const updated = await api.toggleTestMode();
+			auth.updateMerchant(updated);
+			testMode = updated.test_mode;
+		}
+	});
 
 	async function toggleTestMode() {
 		toggling = true;
@@ -68,9 +75,9 @@
 			</nav>
 			<div class="sidebar-footer">
 				<div class="test-mode-toggle">
-					<button class="test-btn" class:active={testMode} onclick={toggleTestMode} disabled={toggling}>
+					<button class="test-btn" class:active={effectiveTestMode} onclick={toggleTestMode} disabled={toggling || kybPending}>
 						<span class="dot"></span>
-						{testMode ? 'Test Mode ON' : 'Test Mode'}
+						{kybPending ? 'Preview Mode' : effectiveTestMode ? 'Test Mode ON' : 'Test Mode'}
 					</button>
 				</div>
 				<div class="merchant-info">

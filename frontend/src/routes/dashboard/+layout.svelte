@@ -10,10 +10,11 @@
 
 	onMount(() => {
 		if (!auth.isAuthenticated) goto('/login');
-		if (auth.needsOnboarding) goto('/onboarding');
 	});
 
+	let kybPending = $derived(!auth.merchant?.active);
 	let testMode = $state(auth.merchant?.test_mode ?? false);
+	let effectiveTestMode = $derived(kybPending || testMode);
 	let toggling = $state(false);
 
 	async function toggleTestMode() {
@@ -110,9 +111,9 @@
 			</nav>
 			<div class="sidebar-footer">
 				<div class="test-mode-toggle">
-					<button class="test-btn" class:active={testMode} onclick={toggleTestMode} disabled={toggling}>
+					<button class="test-btn" class:active={effectiveTestMode} onclick={toggleTestMode} disabled={toggling || kybPending}>
 						<span class="dot"></span>
-						{testMode ? 'Test Mode ON' : 'Test Mode'}
+						{kybPending ? 'Preview Mode' : effectiveTestMode ? 'Test Mode ON' : 'Test Mode'}
 					</button>
 				</div>
 				<div class="merchant-info">
@@ -138,7 +139,12 @@
 					<a href="/verify-email">Resend verification</a>
 				</div>
 			{/if}
-			{#if testMode}
+			{#if kybPending}
+				<div class="test-banner">
+					<strong>Preview Mode</strong> — Complete your KYB to go live and start processing real transactions.
+					<a href="/onboarding" class="test-banner-link">Complete Onboarding →</a>
+				</div>
+			{:else if testMode}
 				<div class="test-banner">
 					<strong>Test Mode</strong> — All data shown is for testing purposes. Real transactions are not processed.
 					<button class="test-banner-toggle" onclick={toggleTestMode} disabled={toggling}>Disable</button>
@@ -274,6 +280,8 @@
 	.test-banner-toggle { margin-left: auto; padding: 4px 12px; border: 1px solid #f59e0b; border-radius: 4px; background: #fff; font-size: 12px; font-weight: 600; color: #92400e; cursor: pointer; white-space: nowrap; }
 	.test-banner-toggle:hover { background: #f59e0b; color: #fff; }
 	.test-banner-toggle:disabled { opacity: 0.5; cursor: not-allowed; }
+	.test-banner-link { margin-left: auto; padding: 4px 12px; border: 1px solid #f59e0b; border-radius: 4px; background: #fff; font-size: 12px; font-weight: 600; color: #92400e; text-decoration: none; white-space: nowrap; }
+	.test-banner-link:hover { background: #f59e0b; color: #fff; }
 	@media (max-width: 768px) {
 		.sidebar { transform: translateX(-100%); }
 		.sidebar.open { transform: translateX(0); }
