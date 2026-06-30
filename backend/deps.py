@@ -41,4 +41,7 @@ def merchant_safe(user: dict) -> dict:
         "name": user["name"],
         "company": user.get("company", ""),
         "email_verified": user.get("email_verified", False),
+        "active": user.get("active", False),
+        "onboarding_status": user.get("onboarding_status", "not_started"),
+        "test_mode": user.get("test_mode", False),
     }

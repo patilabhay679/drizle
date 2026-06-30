@@ -93,9 +93,9 @@
 				</div>
 			{:else if tab === 'wallet'}
 				<div class="payment-methods-stack">
-					<div class="payment-method-card"><span>Apple Pay</span></div>
-					<div class="payment-method-card"><span>Google Pay</span></div>
-					<div class="payment-method-card"><span>Samsung Pay</span></div>
+					<div class="payment-method-card"><img src="/icons/apple-logo.png" alt="Apple Pay" height="20" loading="lazy"><span>Apple Pay</span></div>
+					<div class="payment-method-card"><img src="/icons/google-logo.png" alt="Google Pay" height="20" loading="lazy"><span>Google Pay</span></div>
+					<div class="payment-method-card"><img src="/icons/samsung-logo.png" alt="Samsung Pay" height="20" loading="lazy"><span>Samsung Pay</span></div>
 				</div>
 			{:else if tab === 'bnpl'}
 				<div class="payment-methods-stack">
@@ -112,7 +112,7 @@
 						<img src="/icons/aani.png" alt="Aani" height="36" loading="lazy" style="width:auto;">
 					</div>
 					<div class="payment-method-card">
-						<img src="/icons/visa.svg" alt="Visa AFT" height="36" loading="lazy" style="width:auto;">
+						<span>Direct Debit</span>
 					</div>
 				</div>
 			{/if}

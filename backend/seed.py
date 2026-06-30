@@ -27,6 +27,11 @@ async def seed(db):
             "company": "Demo SaaS Ltd",
             "created_at": datetime.now(timezone.utc).isoformat(),
             "email_verified": True,
+            "active": True,
+            "onboarding_status": "approved",
+            "onboarding_data": {},
+            "kyc_documents": [],
+            "test_mode": False,
             "api_keys": {
                 "publishable": "dp_pub_demo_sample_key",
                 "secret": "dp_sec_demo_secret_key_replace_in_prod",

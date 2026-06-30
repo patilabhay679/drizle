@@ -43,14 +43,6 @@ async def http_exception_handler(request: Request, exc: HTTPException):
     )
 
 
-# Validate secret early
-SECRET_KEY = os.environ.get("AUTH_SECRET_KEY", "")
-if not SECRET_KEY:
-    logger.warning("AUTH_SECRET_KEY not set — using insecure default. Set it via environment variable.")
-elif SECRET_KEY == "drizle-dev-secret-change-in-prod":
-    logger.warning("AUTH_SECRET_KEY is still the default value — change it for production.")
-
-
 @app.get("/api/v1/health")
 async def health():
     return {
@@ -69,6 +61,7 @@ from routers.pay_links import router as pay_links_router
 from routers.team import router as team_router
 from routers.reports import router as reports_router
 from routers.support import router as support_router
+from routers.onboarding import router as onboarding_router
 
 app.include_router(auth_router)
 app.include_router(me_router)
@@ -80,6 +73,7 @@ app.include_router(pay_links_router)
 app.include_router(team_router)
 app.include_router(reports_router)
 app.include_router(support_router)
+app.include_router(onboarding_router)
 
 
 @app.api_route("/{catchall:path}", methods=["GET", "HEAD"])

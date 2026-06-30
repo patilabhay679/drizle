@@ -3,7 +3,10 @@ import { auth } from '$lib/stores/auth';
 const BASE = '/api/v1';
 
 async function request(path, options = {}) {
-	const headers = { 'Content-Type': 'application/json', ...options.headers };
+	const headers = { ...options.headers };
+	if (!(options.body instanceof FormData)) {
+		headers['Content-Type'] = 'application/json';
+	}
 	if (auth.token) {
 		headers['Authorization'] = `Bearer ${auth.token}`;
 	}
@@ -66,8 +69,14 @@ export const api = {
 	},
 
 	// Payouts
-	getPayouts: (page = 1, limit = 20, status_filter) =>
-		request(`/payouts?page=${page}&limit=${limit}${status_filter ? `&status_filter=${status_filter}` : ''}`),
+	getPayouts: (params = {}) => {
+		const q = new URLSearchParams({ page: params.page || 1, limit: params.limit || 20 });
+		if (params.status_filter) q.set('status_filter', params.status_filter);
+		if (params.start_date) q.set('start_date', params.start_date);
+		if (params.end_date) q.set('end_date', params.end_date);
+		if (params.search) q.set('search', params.search);
+		return request(`/payouts?${q}`);
+	},
 
 	// Pay by Link
 	getPayLinks: (page = 1, limit = 20, is_static, is_recurring) => {
@@ -110,4 +119,23 @@ export const api = {
 
 	submitPublicTicket: (data) =>
 		request('/support/tickets/public', { method: 'POST', body: JSON.stringify(data) }),
+
+	// Onboarding
+	getOnboardingData: () => request('/onboarding/data'),
+
+	saveOnboardingSection: (section, data) =>
+		request('/onboarding/data', { method: 'PUT', body: JSON.stringify({ section, data }) }),
+
+	uploadOnboardingDocument: (file, docType) => {
+		const formData = new FormData();
+		formData.append('file', file);
+		formData.append('doc_type', docType);
+		return request('/onboarding/upload-document', { method: 'POST', body: formData });
+	},
+
+	submitOnboarding: () =>
+		request('/onboarding/submit', { method: 'POST' }),
+
+	toggleTestMode: () =>
+		request('/onboarding/test-mode', { method: 'POST' }),
 };

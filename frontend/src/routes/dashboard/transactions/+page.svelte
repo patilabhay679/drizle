@@ -24,6 +24,8 @@
 			if (search) params.search = search;
 			if (schemeFilter) params.scheme = schemeFilter;
 			if (typeFilter) params.txn_type = typeFilter;
+			if (startDate) params.start_date = startDate;
+			if (endDate) params.end_date = endDate;
 			const res = await api.getTransactions(page, limit, params);
 			txns = res.data;
 			total = res.total;

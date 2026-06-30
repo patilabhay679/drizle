@@ -19,7 +19,12 @@
 	async function load() {
 		loading = true;
 		try {
-			const res = await api.getPayouts(page, limit, statusFilter || undefined);
+			const params = { page, limit };
+			if (statusFilter) params.status_filter = statusFilter;
+			if (startDate) params.start_date = startDate;
+			if (endDate) params.end_date = endDate;
+			if (search) params.search = search;
+			const res = await api.getPayouts(params);
 			payouts = res.data;
 			total = res.total;
 		} catch (e) { error = e.message || 'Something went wrong'; } finally {

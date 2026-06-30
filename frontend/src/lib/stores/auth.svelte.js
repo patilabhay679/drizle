@@ -16,19 +16,21 @@ function load() {
 load();
 
 export const auth = {
-	get token() { return t; },
-	get merchant() { return m; },
-	get isAuthenticated() { return t !== null; },
-	login(token, merchant) {
-		t = token;
-		m = merchant;
-		localStorage.setItem(TOKEN_KEY, token);
-		localStorage.setItem(MERCHANT_KEY, JSON.stringify(merchant));
-	},
-	logout() {
-		t = null;
-		m = null;
-		localStorage.removeItem(TOKEN_KEY);
-		localStorage.removeItem(MERCHANT_KEY);
-	}
+    get token() { return t; },
+    get merchant() { return m; },
+    get isAuthenticated() { return t !== null; },
+    get needsOnboarding() { return m !== null && !m.active; },
+    get onboardingStatus() { return m?.onboarding_status || 'not_started'; },
+    login(token, merchant) {
+        t = token;
+        m = merchant;
+        localStorage.setItem(TOKEN_KEY, token);
+        localStorage.setItem(MERCHANT_KEY, JSON.stringify(merchant));
+    },
+    logout() {
+        t = null;
+        m = null;
+        localStorage.removeItem(TOKEN_KEY);
+        localStorage.removeItem(MERCHANT_KEY);
+    }
 };

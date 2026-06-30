@@ -1,6 +1,9 @@
 fastapi
 uvicorn[standard]
+pymongo
+python-multipart
 requests
 bcrypt
-pyjwt
+PyJWT
 pydantic[email]
+faker

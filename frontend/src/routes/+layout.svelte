@@ -8,8 +8,9 @@
 
 	let isDocs = $derived(page.url.pathname.startsWith('/docs'));
 	let isDashboard = $derived(page.url.pathname.startsWith('/dashboard'));
-	let showMarketing = $derived(!isDocs && !isDashboard);
-	let showFooter = $derived(!isDashboard);
+	let isOnboarding = $derived(page.url.pathname.startsWith('/onboarding'));
+	let showMarketing = $derived(!isDocs && !isDashboard && !isOnboarding);
+	let showFooter = $derived(!isDashboard && !isOnboarding);
 </script>
 
 {#if isDocs}

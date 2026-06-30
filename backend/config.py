@@ -1,7 +1,9 @@
 import os
 import json
 
-AUTH_SECRET_KEY = os.environ.get("AUTH_SECRET_KEY", "drizle-dev-secret-change-in-prod")
+AUTH_SECRET_KEY = os.environ.get("AUTH_SECRET_KEY")
+if not AUTH_SECRET_KEY:
+    raise RuntimeError("AUTH_SECRET_KEY environment variable must be set")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 1440
 DB_NAME = "drizle"

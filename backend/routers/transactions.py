@@ -1,4 +1,5 @@
 import re
+from datetime import datetime, timezone
 
 from fastapi import APIRouter, Depends, Request
 
@@ -15,6 +16,8 @@ async def get_transactions(
     scheme: str | None = None,
     txn_type: str | None = None,
     search: str | None = None,
+    start_date: str | None = None,
+    end_date: str | None = None,
     merchant: dict = Depends(get_current_merchant),
 ):
     db = request.app.state.db
@@ -23,6 +26,13 @@ async def get_transactions(
         query["scheme"] = scheme
     if txn_type:
         query["type"] = txn_type
+    if start_date or end_date:
+        date_filter = {}
+        if start_date:
+            date_filter["$gte"] = datetime.fromisoformat(start_date).replace(tzinfo=timezone.utc).isoformat()
+        if end_date:
+            date_filter["$lte"] = datetime.fromisoformat(end_date).replace(tzinfo=timezone.utc).isoformat()
+        query["created_at"] = date_filter
     if search:
         escaped = re.escape(search)
         query["$or"] = [

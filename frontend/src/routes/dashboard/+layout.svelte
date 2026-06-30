@@ -9,6 +9,7 @@
 
 	onMount(() => {
 		if (!auth.isAuthenticated) goto('/login');
+		if (auth.needsOnboarding) goto('/onboarding');
 	});
 
 	function logout() {
