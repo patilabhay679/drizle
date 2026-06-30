@@ -27,10 +27,6 @@ export const auth = {
         localStorage.setItem(TOKEN_KEY, token);
         localStorage.setItem(MERCHANT_KEY, JSON.stringify(merchant));
     },
-    updateMerchant(merchant) {
-        m = merchant;
-        localStorage.setItem(MERCHANT_KEY, JSON.stringify(merchant));
-    },
     logout() {
         t = null;
         m = null;

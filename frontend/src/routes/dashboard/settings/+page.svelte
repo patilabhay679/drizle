@@ -21,9 +21,6 @@
 	let keyLoading = $state(false);
 	let error = $state('');
 
-	let testMode = $state(auth.merchant?.test_mode ?? false);
-	let toggling = $state(false);
-
 	onMount(async () => {
 		name = auth.merchant?.name || '';
 		company = auth.merchant?.company || '';
@@ -31,19 +28,6 @@
 			apiKeys = await api.getApiKeys();
 		} catch (e) { error = e.message || 'Something went wrong'; }
 	});
-
-	async function toggleTestMode() {
-		toggling = true;
-		try {
-			const updated = await api.toggleTestMode();
-			auth.updateMerchant(updated);
-			testMode = updated.test_mode;
-		} catch (e) {
-			console.error(e);
-		} finally {
-			toggling = false;
-		}
-	}
 
 	async function saveProfile(e) {
 		e.preventDefault();
@@ -189,18 +173,6 @@
 </div>
 
 <div class="card">
-	<h3>Test Mode</h3>
-	<p class="hint">When test mode is on, the dashboard shows a banner and all API interactions use test endpoints. Toggle it here or from the sidebar.</p>
-	<div class="test-toggle-row">
-		<span class="test-toggle-label">{testMode ? 'Test Mode is ON' : 'Test Mode is OFF'}</span>
-		<button class="test-btn" class:active={testMode} onclick={toggleTestMode} disabled={toggling}>
-			<span class="dot"></span>
-			{toggling ? 'Toggling…' : testMode ? 'Disable Test Mode' : 'Enable Test Mode'}
-		</button>
-	</div>
-</div>
-
-<div class="card">
 	<h3>Account</h3>
 	<p class="hint">Sign out of your account.</p>
 	<button class="btn secondary" onclick={() => auth.logout()}>Sign Out</button>
@@ -273,19 +245,6 @@
 	}
 	.btn.secondary:hover:not(:disabled) { border-color: var(--muted); }
 	.error-banner { padding: 10px 14px; background: #fef2f2; color: #dc2626; border-radius: 6px; font-size: 13px; margin-bottom: 16px; }
-	.test-toggle-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-	.test-toggle-label { font-size: 14px; font-weight: 500; color: var(--ink); }
-	.test-btn {
-		display: flex; align-items: center; gap: 8px;
-		padding: 8px 16px; border: 1px solid var(--line); border-radius: 6px;
-		background: #fff; font-size: 13px; font-weight: 600; color: var(--muted);
-		cursor: pointer; transition: all 0.15s;
-	}
-	.test-btn:hover { border-color: var(--primary); color: var(--ink); }
-	.test-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-	.test-btn.active { background: #fef3c7; border-color: #f59e0b; color: #92400e; }
-	.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
-	.test-btn.active .dot { background: #f59e0b; }
 	.field-row {
 		display: flex;
 		align-items: center;

@@ -32,7 +32,6 @@ async def seed(db):
             "onboarding_status": "approved",
             "onboarding_data": {},
             "kyc_documents": [],
-            "test_mode": False,
             "api_keys": {
                 "publishable": "dp_pub_demo_sample_key",
                 "secret": "dp_sec_demo_secret_key_replace_in_prod",
@@ -115,7 +114,6 @@ async def seed(db):
                     "status": "processed",
                 },
             ],
-            "test_mode": True,
             "api_keys": {
                 "publishable": "dp_pub_onboarding_sample_key",
                 "secret": "dp_sec_onboarding_secret_key_replace_in_prod",

@@ -3,30 +3,14 @@
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
-	import { api } from '$lib/api';
 
 	let { children } = $props();
 
 	let pathname = $derived(page.url.pathname);
-	let testMode = $state(auth.merchant?.test_mode ?? false);
-	let toggling = $state(false);
 
 	onMount(() => {
 		if (!auth.isAuthenticated) goto('/login');
 	});
-
-	async function toggleTestMode() {
-		toggling = true;
-		try {
-			const updated = await api.toggleTestMode();
-			auth.updateMerchant(updated);
-			testMode = updated.test_mode;
-		} catch (e) {
-			console.error(e);
-		} finally {
-			toggling = false;
-		}
-	}
 
 	function logout() {
 		auth.logout();
@@ -67,12 +51,6 @@
 				{/each}
 			</nav>
 			<div class="sidebar-footer">
-				<div class="test-mode-toggle">
-					<button class="test-btn" class:active={testMode} onclick={toggleTestMode} disabled={toggling}>
-						<span class="dot"></span>
-						{testMode ? 'Test Mode ON' : 'Test Mode'}
-					</button>
-				</div>
 				<a href="/dashboard" class="preview-link">Preview Portal →</a>
 				<div class="merchant-info">
 					<strong>{auth.merchant?.name}</strong>
@@ -115,20 +93,8 @@
 	}
 	.step-link.active .step-num { background: var(--primary); color: #fff; }
 	.sidebar-footer { padding: 12px 20px 16px; border-top: 1px solid var(--line); }
-	.test-mode-toggle { margin-bottom: 8px; }
 	.preview-link { display: block; text-align: center; padding: 6px; margin-bottom: 8px; border: 1px solid var(--line); border-radius: 4px; font-size: 12px; font-weight: 600; color: var(--primary); text-decoration: none; transition: all 0.15s; }
 	.preview-link:hover { border-color: var(--primary); background: #e6fcf0; }
-	.test-btn {
-		display: flex; align-items: center; gap: 8px; width: 100%;
-		padding: 8px 12px; border: 1px solid var(--line); border-radius: 6px;
-		background: none; font-size: 13px; font-weight: 600; color: var(--muted);
-		cursor: pointer; transition: all 0.15s;
-	}
-	.test-btn:hover { border-color: var(--primary); color: var(--ink); }
-	.test-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-	.test-btn.active { background: #fef3c7; border-color: #f59e0b; color: #92400e; }
-	.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
-	.test-btn.active .dot { background: #f59e0b; }
 	.merchant-info strong { display: block; font-size: 12px; color: var(--ink); }
 	.merchant-info span { font-size: 11px; color: var(--muted); }
 	.logout-btn {
