@@ -3,6 +3,7 @@
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
+	import { api } from '$lib/api';
 
 	let { children } = $props();
 	let sidebarOpen = $state(false);
@@ -10,6 +11,24 @@
 	onMount(() => {
 		if (!auth.isAuthenticated) goto('/login');
 	});
+
+	let kybPending = $derived(!auth.merchant?.active);
+	let testMode = $state(auth.merchant?.test_mode ?? false);
+	let effectiveTestMode = $derived(kybPending || testMode);
+	let toggling = $state(false);
+
+	async function toggleTestMode() {
+		toggling = true;
+		try {
+			const updated = await api.toggleTestMode();
+			auth.updateMerchant(updated);
+			testMode = updated.test_mode;
+		} catch (e) {
+			console.error(e);
+		} finally {
+			toggling = false;
+		}
+	}
 
 	function logout() {
 		auth.logout();
@@ -91,6 +110,12 @@
 				{/each}
 			</nav>
 			<div class="sidebar-footer">
+				<div class="test-mode-toggle">
+					<button class="test-btn" class:active={effectiveTestMode} onclick={toggleTestMode} disabled={toggling || kybPending}>
+						<span class="dot"></span>
+						{kybPending ? 'Preview Mode' : effectiveTestMode ? 'Test Mode ON' : 'Test Mode'}
+					</button>
+				</div>
 				<div class="merchant-info">
 					<strong>{auth.merchant?.name}</strong>
 					<span>{auth.merchant?.email}</span>
@@ -112,6 +137,17 @@
 				<div class="verify-banner">
 					Please verify your email address to access all features.
 					<a href="/verify-email">Resend verification</a>
+				</div>
+			{/if}
+			{#if kybPending}
+				<div class="test-banner">
+					<strong>Preview Mode</strong> — Complete your KYB to go live and start processing real transactions.
+					<a href="/onboarding" class="test-banner-link">Complete Onboarding →</a>
+				</div>
+			{:else if testMode}
+				<div class="test-banner">
+					<strong>Test Mode</strong> — All data shown is for testing purposes. Real transactions are not processed.
+					<button class="test-banner-toggle" onclick={toggleTestMode} disabled={toggling}>Disable</button>
 				</div>
 			{/if}
 			<div class="content">
@@ -187,6 +223,18 @@
 		padding: 12px 16px 16px;
 		border-top: 1px solid var(--line);
 	}
+	.test-mode-toggle { margin-bottom: 10px; }
+	.test-btn {
+		display: flex; align-items: center; gap: 8px; width: 100%;
+		padding: 8px 12px; border: 1px solid var(--line); border-radius: 6px;
+		background: none; font-size: 13px; font-weight: 600; color: var(--muted);
+		cursor: pointer; transition: all 0.15s;
+	}
+	.test-btn:hover { border-color: var(--primary); color: var(--ink); }
+	.test-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+	.test-btn.active { background: #fef3c7; border-color: #f59e0b; color: #92400e; }
+	.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+	.test-btn.active .dot { background: #f59e0b; }
 	.merchant-info { margin-bottom: 12px; }
 	.merchant-info strong { display: block; font-size: 13px; color: var(--ink); }
 	.merchant-info span { font-size: 12px; color: var(--muted); }
@@ -227,6 +275,13 @@
 	.verify-banner { padding: 10px 24px; background: #fef3c7; color: #92400e; font-size: 14px; display: flex; gap: 8px; align-items: center; }
 	.verify-banner a { color: var(--primary); font-weight: 600; white-space: nowrap; }
 	.verify-banner a:hover { text-decoration: underline; }
+	.test-banner { padding: 10px 24px; background: #fef3c7; color: #92400e; font-size: 14px; display: flex; gap: 12px; align-items: center; border-bottom: 1px solid #fde68a; }
+	.test-banner strong { font-weight: 700; }
+	.test-banner-toggle { margin-left: auto; padding: 4px 12px; border: 1px solid #f59e0b; border-radius: 4px; background: #fff; font-size: 12px; font-weight: 600; color: #92400e; cursor: pointer; white-space: nowrap; }
+	.test-banner-toggle:hover { background: #f59e0b; color: #fff; }
+	.test-banner-toggle:disabled { opacity: 0.5; cursor: not-allowed; }
+	.test-banner-link { margin-left: auto; padding: 4px 12px; border: 1px solid #f59e0b; border-radius: 4px; background: #fff; font-size: 12px; font-weight: 600; color: #92400e; text-decoration: none; white-space: nowrap; }
+	.test-banner-link:hover { background: #f59e0b; color: #fff; }
 	@media (max-width: 768px) {
 		.sidebar { transform: translateX(-100%); }
 		.sidebar.open { transform: translateX(0); }

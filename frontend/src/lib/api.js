@@ -135,4 +135,7 @@ export const api = {
 
 	submitOnboarding: () =>
 		request('/onboarding/submit', { method: 'POST' }),
+
+	toggleTestMode: () =>
+		request('/onboarding/test-mode', { method: 'POST' }),
 };

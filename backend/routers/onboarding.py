@@ -26,7 +26,7 @@ from models import (
     OnboardingSecurity,
     OnboardingExtras,
 )
-from deps import get_current_merchant
+from deps import get_current_merchant, merchant_safe
 from pydantic import ValidationError
 
 logger = logging.getLogger("drizle")
@@ -217,6 +217,30 @@ async def submit_onboarding(
         {"$set": {"onboarding_status": "submitted"}},
     )
     return {"ok": True, "onboarding_status": "submitted"}
+
+
+@router.post("/test-mode")
+async def toggle_test_mode(
+    request: Request,
+    merchant: dict = Depends(get_current_merchant),
+):
+    db = request.app.state.db
+    if not merchant.get("active", False):
+        # Force test mode ON while KYB is pending
+        await db.users.update_one(
+            {"email": merchant["email"]},
+            {"$set": {"test_mode": True}},
+        )
+        updated = await db.users.find_one({"email": merchant["email"]})
+        return merchant_safe(updated)
+
+    current = merchant.get("test_mode", False)
+    await db.users.update_one(
+        {"email": merchant["email"]},
+        {"$set": {"test_mode": not current}},
+    )
+    updated = await db.users.find_one({"email": merchant["email"]})
+    return merchant_safe(updated)
 
 
 # ─── Mock OCR generators ───

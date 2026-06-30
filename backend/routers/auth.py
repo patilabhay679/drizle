@@ -31,6 +31,7 @@ async def register(body: UserModel, request: Request):
         "onboarding_status": "not_started",
         "onboarding_data": {},
         "kyc_documents": [],
+        "test_mode": False,
         "api_keys": {
             "publishable": f"dp_pub_{uuid.uuid4().hex[:16]}",
             "secret": f"dp_sec_{uuid.uuid4().hex[:32]}",
