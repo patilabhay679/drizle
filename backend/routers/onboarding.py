@@ -5,8 +5,29 @@ from datetime import datetime, timezone
 from fastapi import APIRouter, HTTPException, Depends, status, Request, UploadFile, File, Form
 from faker import Faker
 
-from models import OnboardingSaveModel
+MAX_FILE_SIZE = 10 * 1024 * 1024  # 10 MB
+ALLOWED_CONTENT_TYPES = {
+    "image/png",
+    "image/jpeg",
+    "image/jpg",
+    "application/pdf",
+}
+
+from models import (
+    OnboardingSaveModel,
+    OnboardingBusinessType,
+    OnboardingBusinessDetails,
+    OnboardingRepresentative,
+    OnboardingOwner,
+    OnboardingExecutive,
+    OnboardingProducts,
+    OnboardingPublic,
+    OnboardingBank,
+    OnboardingSecurity,
+    OnboardingExtras,
+)
 from deps import get_current_merchant, merchant_safe
+from pydantic import ValidationError
 
 logger = logging.getLogger("drizle")
 fake = Faker()
@@ -19,6 +40,19 @@ DOC_TYPES = {
     "bank_letter",
     "vat_certificate",
     "company_registration",
+}
+
+SECTION_MODELS = {
+    "business_type": OnboardingBusinessType,
+    "business_details": OnboardingBusinessDetails,
+    "representative": OnboardingRepresentative,
+    "owners": OnboardingOwner,
+    "executives": OnboardingExecutive,
+    "products": OnboardingProducts,
+    "public": OnboardingPublic,
+    "bank": OnboardingBank,
+    "security": OnboardingSecurity,
+    "extras": OnboardingExtras,
 }
 
 
@@ -55,6 +89,19 @@ async def save_onboarding_data(
     if not key:
         raise HTTPException(status.HTTP_400_BAD_REQUEST, detail=f"Unknown section: {body.section}")
 
+    model_cls = SECTION_MODELS.get(body.section)
+    if model_cls:
+        try:
+            if body.section in ("owners", "executives"):
+                if not isinstance(body.data, list):
+                    raise HTTPException(status.HTTP_400_BAD_REQUEST, detail=f"{body.section} must be an array")
+                for item in body.data:
+                    model_cls(**item)
+            else:
+                model_cls(**body.data)
+        except ValidationError as e:
+            raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY, detail=e.errors(include_context=False))
+
     await db.users.update_one(
         {"email": merchant["email"]},
         {"$set": {key: body.data}},
@@ -85,6 +132,20 @@ async def upload_document(
             status.HTTP_400_BAD_REQUEST,
             detail=f"Invalid doc_type. Must be one of: {', '.join(sorted(DOC_TYPES))}",
         )
+
+    if file.content_type not in ALLOWED_CONTENT_TYPES:
+        raise HTTPException(
+            status.HTTP_400_BAD_REQUEST,
+            detail=f"Unsupported file type '{file.content_type}'. Allowed: PNG, JPEG, PDF",
+        )
+
+    contents = await file.read()
+    if len(contents) > MAX_FILE_SIZE:
+        raise HTTPException(
+            status.HTTP_400_BAD_REQUEST,
+            detail=f"File too large ({len(contents)} bytes). Maximum allowed: 10 MB",
+        )
+    await file.seek(0)
 
     db = request.app.state.db
     doc_id = f"kyc_{uuid.uuid4().hex[:12]}"

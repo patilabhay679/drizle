@@ -17,6 +17,7 @@ card_origins = ["Domestic", "International", "Domestic", "Domestic", "Internatio
 
 async def seed(db):
     demo_email = "demo@drizlepay.com"
+    onboarding_email = "onboarding@demo.com"
 
     existing = await db.users.find_one({"email": demo_email})
     if not existing:
@@ -35,6 +36,89 @@ async def seed(db):
             "api_keys": {
                 "publishable": "dp_pub_demo_sample_key",
                 "secret": "dp_sec_demo_secret_key_replace_in_prod",
+            },
+        })
+
+    onboarding_existing = await db.users.find_one({"email": onboarding_email})
+    if not onboarding_existing:
+        await db.users.insert_one({
+            "email": onboarding_email,
+            "password": bcrypt.hashpw("demo123".encode(), bcrypt.gensalt()).decode(),
+            "name": "Desert Trading LLC",
+            "company": "Desert Trading LLC",
+            "created_at": datetime.now(timezone.utc).isoformat(),
+            "email_verified": True,
+            "active": False,
+            "onboarding_status": "in_progress",
+            "onboarding_data": {
+                "business_type": {"type": "llc", "subtype": "ecommerce"},
+                "business_details": {
+                    "legal_name": "Desert Trading LLC",
+                    "trading_name": "Desert Trading",
+                    "registration_number": "CR-88492017",
+                    "tax_id": "100478963201478",
+                    "emirates_id": "784-1992-1234567-1",
+                    "website": "https://deserttrading.ae",
+                    "phone": "+971552345678",
+                    "address": "Office 101, Al Fattan Plaza, Dubai, UAE",
+                    "city": "Dubai",
+                    "country": "UAE",
+                },
+                "representative": {
+                    "name": "Ahmed Al Mansouri",
+                    "email": "ahmed@deserttrading.ae",
+                    "phone": "+971552345678",
+                    "job_title": "CEO",
+                },
+                "owners": [
+                    {
+                        "name": "Ahmed Al Mansouri",
+                        "email": "ahmed@deserttrading.ae",
+                        "phone": "+971552345678",
+                        "nationality": "UAE",
+                        "ownership_pct": 100,
+                    }
+                ],
+                "executives": [],
+                "products": {
+                    "description": "Online retail of electronics and home appliances across the UAE",
+                    "industry": "ecommerce",
+                    "avg_ticket_size": 450,
+                    "expected_monthly_volume": 150000,
+                    "target_markets": ["UAE", "Saudi Arabia"],
+                },
+                "public": {
+                    "public_name": "Desert Trading",
+                    "support_email": "support@deserttrading.ae",
+                    "support_phone": "+971552345678",
+                    "support_url": "https://deserttrading.ae/contact",
+                    "terms_url": "https://deserttrading.ae/terms",
+                    "privacy_url": "https://deserttrading.ae/privacy",
+                },
+                "bank": {
+                    "bank_name": "Emirates NBD",
+                    "account_name": "Desert Trading LLC",
+                    "account_number": "1012345678",
+                    "iban": "AE770260001014273931915",
+                    "swift": "EBILAEADXXX",
+                },
+                "security": {"two_factor_enabled": False},
+                "extras": {"referral_source": "Google", "notes": ""},
+            },
+            "kyc_documents": [
+                {
+                    "id": "kyc_trade_license",
+                    "doc_type": "trade_license",
+                    "filename": "trade_license.pdf",
+                    "content_type": "application/pdf",
+                    "uploaded_at": datetime.now(timezone.utc).isoformat(),
+                    "status": "processed",
+                },
+            ],
+            "test_mode": True,
+            "api_keys": {
+                "publishable": "dp_pub_onboarding_sample_key",
+                "secret": "dp_sec_onboarding_secret_key_replace_in_prod",
             },
         })
 

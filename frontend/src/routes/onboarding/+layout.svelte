@@ -18,8 +18,9 @@
 	async function toggleTestMode() {
 		toggling = true;
 		try {
-			await api.toggleTestMode();
-			testMode = !testMode;
+			const updated = await api.toggleTestMode();
+			auth.updateMerchant(updated);
+			testMode = updated.test_mode;
 		} catch (e) {
 			console.error(e);
 		} finally {

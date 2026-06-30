@@ -19,12 +19,16 @@ export const auth = {
     get token() { return t; },
     get merchant() { return m; },
     get isAuthenticated() { return t !== null; },
-    get needsOnboarding() { return m !== null && !m.active; },
+    get needsOnboarding() { return m !== null && !m.active && m.onboarding_status !== 'submitted' && m.onboarding_status !== 'approved'; },
     get onboardingStatus() { return m?.onboarding_status || 'not_started'; },
     login(token, merchant) {
         t = token;
         m = merchant;
         localStorage.setItem(TOKEN_KEY, token);
+        localStorage.setItem(MERCHANT_KEY, JSON.stringify(merchant));
+    },
+    updateMerchant(merchant) {
+        m = merchant;
         localStorage.setItem(MERCHANT_KEY, JSON.stringify(merchant));
     },
     logout() {

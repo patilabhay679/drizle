@@ -14,6 +14,9 @@ let fetched = false;
 export async function load(force = false) {
 	if (fetched && !force) return;
 	loading.set(true);
+	error.set(null);
+	data.set({});
+	documents.set([]);
 	try {
 		const res = await api.getOnboardingData();
 		data.set(res.data || {});
@@ -73,4 +76,9 @@ export async function submit() {
 
 export function resetCache() {
 	fetched = false;
+}
+
+export function clearErrors() {
+	error.set(null);
+	submitError.set(null);
 }
