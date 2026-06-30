@@ -80,6 +80,7 @@
 						{kybPending ? 'Preview Mode' : effectiveTestMode ? 'Test Mode ON' : 'Test Mode'}
 					</button>
 				</div>
+				<a href="/dashboard" class="preview-link">Preview Portal →</a>
 				<div class="merchant-info">
 					<strong>{auth.merchant?.name}</strong>
 					<span>{auth.merchant?.email}</span>
@@ -121,7 +122,9 @@
 	}
 	.step-link.active .step-num { background: var(--primary); color: #fff; }
 	.sidebar-footer { padding: 12px 20px 16px; border-top: 1px solid var(--line); }
-	.test-mode-toggle { margin-bottom: 10px; }
+	.test-mode-toggle { margin-bottom: 8px; }
+	.preview-link { display: block; text-align: center; padding: 6px; margin-bottom: 8px; border: 1px solid var(--line); border-radius: 4px; font-size: 12px; font-weight: 600; color: var(--primary); text-decoration: none; transition: all 0.15s; }
+	.preview-link:hover { border-color: var(--primary); background: #e6fcf0; }
 	.test-btn {
 		display: flex; align-items: center; gap: 8px; width: 100%;
 		padding: 8px 12px; border: 1px solid var(--line); border-radius: 6px;
