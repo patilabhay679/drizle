@@ -53,11 +53,20 @@ export const api = {
 		request('/auth/rotate-api-keys', { method: 'POST' }),
 
 	// Dashboard
-	getDashboardMetrics: (start_date, end_date) =>
-		request(`/dashboard/metrics${start_date ? `?start_date=${start_date}&end_date=${end_date}` : ''}`),
+	getDashboardMetrics: (start_date, end_date) => {
+		const q = new URLSearchParams();
+		if (start_date) q.set('start_date', start_date);
+		if (end_date) q.set('end_date', end_date);
+		return request(`/dashboard/metrics${q.toString() ? `?${q}` : ''}`);
+	},
 
-	getDashboardCharts: (start_date, end_date) =>
-		request(`/dashboard/charts${start_date ? `?start_date=${start_date}&end_date=${end_date}` : ''}`),
+	getDashboardCharts: (start_date, end_date, granularity) => {
+		const q = new URLSearchParams();
+		if (start_date) q.set('start_date', start_date);
+		if (end_date) q.set('end_date', end_date);
+		if (granularity) q.set('granularity', granularity);
+		return request(`/dashboard/charts${q.toString() ? `?${q}` : ''}`);
+	},
 
 	getRecentPayouts: (limit = 5) =>
 		request(`/payouts/recent?limit=${limit}`),

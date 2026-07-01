@@ -127,12 +127,6 @@
 		<div class="overlay" class:visible={sidebarOpen} onclick={() => sidebarOpen = false}></div>
 
 		<main class="main">
-			<header class="topbar">
-				<button class="menu-btn" onclick={() => sidebarOpen = true}>☰</button>
-				<h2>Dashboard</h2>
-				<div class="spacer"></div>
-				<div class="topbar-merchant">{auth.merchant?.name}</div>
-			</header>
 			{#if auth.merchant?.email_verified === false}
 				<div class="verify-banner">
 					Please verify your email address to access all features.
